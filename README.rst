@@ -1,4 +1,5 @@
-#Docker sphinxdoc with
+Docker sphinxdoc 
+################
 
 
 .. code-block:: bash
@@ -49,3 +50,39 @@
       texlive-science
       texlive-pstricks
       texlive-pictures
+
+readthedoc server config
+=========================
+
+  #. https://docs.readthedocs.io/en/latest/install.html
+
+  
+  .. note::
+     
+     readthedocs/setting/local_settings/prod.py  PRODUCTION_NAME to hostIP
+     python manager.py runserver 0.0.0.0:8000
+      
+   
+  #. thre are two docker image sources:
+
+     .. code-block:: bash
+        
+        #https://github.com/sqawasmi/readthedocs-docker
+        docker run -d --name ReadTheDocs -p 8000:8000 shaker/readthedocs
+
+        #https://docs.readthedocs.io/en/latest/install.html
+        https://github.com/rtfd/readthedocs-docker-images
+
+
+  #. https://github.com/yoloseem/awesome-sphinxdoc
+     
+     - sphinx-autobuild
+     - sphinx-Server
+       
+       .. code-block:: bash
+          
+          docker pull dldl/sphinx-server
+          docker run -t -v "$(pwd)":/web dldl/sphinx-server make html
+          #with autobuild enable
+          docker run -itd -v "$(pwd)":/web -u $(id -u):$(id -g) -p 8000:8000 --name sphinx-server dldl/sphinx-server
+     
