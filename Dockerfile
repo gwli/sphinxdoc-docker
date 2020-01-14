@@ -24,7 +24,7 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
 RUN pip3 install --no-cache-dir --upgrade --no-cache-dir pip 
 RUN pip3 install --no-cache-dir --upgrade --no-cache-dir graphviz networkx Sphinx sphinx_rtd_theme alabaster sphinx_bootstrap_theme sphinxcontrib-bibtex
 
-RUN apt-get update && apt install -y graphivz pandoc-citeproc
+RUN apt-get update && apt-get install -y graphviz pandoc-citeproc
 
 
 WORKDIR /doc
