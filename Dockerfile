@@ -26,6 +26,16 @@ RUN pip3 install --no-cache-dir --upgrade --no-cache-dir graphviz networkx Sphin
 
 RUN apt-get update && apt-get install -y graphviz pandoc-citeproc
 
+#add papers 
+RUN apt-get update && apt-get install -y git poppler-utils locales language-pack-zh-hans wget curl axel
+RUN pip3 install --no-cache-dir --upgrade --no-cache-dir unidecode crossrefapi bibtexparser scholarly fuzzywuzzy six python-Levenshtein 
+
+RUN locale-gen zh_CN.UTF-8
+ENV LC_ALL='zh_CN.utf8'
+
+RUN pip3 install --no-cache-dir --upgrade --no-cache-dir git+https://github.com/perrette/papers.git 
+
+
 
 WORKDIR /doc
 
